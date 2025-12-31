@@ -91,21 +91,44 @@ public class ActionDriver {
 	 * System.out.println("Element is not displayed: " + e.getMessage()); return
 	 * false; } }
 	 */
+	
+	
+	// Simplified the method and remove redundant conditions
+		public boolean isDisplayed(By by) {
+			try {
+				waitForElementToBeVisible(by);
+//				applyBorder(by,"green");
+				logger.info("Element is displayed " + getElementDescription(by));
+				ExtentManager.logStep("Element is displayed: "+getElementDescription(by));
+				ExtentManager.logStepWithScreenshot(BaseClass.getDriver(), "Element is displayed: ", "Element is displayed: "+getElementDescription(by));
+				return driver.findElement(by).isDisplayed();
+			} catch (Exception e) {
+//				applyBorder(by,"red");
+				logger.error("Element is not displayed: " + e.getMessage());
+				ExtentManager.logFailure(BaseClass.getDriver(),"Element is not displayed: ","Elemenet is not displayed: "+getElementDescription(by));
+				return false;
+			}
+		}
+
 
 	// simplified isDisplayed
-	public boolean isDisplayed(By by) {
-		try {
-			waitForElementToBeVisible(by);
-			logger.info("Element is displayed " + getElementDescription(by));
-			ExtentManager.logStep("Element is displayed: "+getElementDescription(by));
-			ExtentManager.logStepWithScreenshot(BaseClass.getDriver(), "Element is displayed: ", "Element is displayed: "+getElementDescription(by));
-			return driver.findElement(by).isDisplayed();
-		} catch (Exception e) {
-			System.out.println("Element is not displayed: " + e.getMessage());
-			ExtentManager.logFailure(BaseClass.getDriver(),"Element is not displayed: ","Elemenet is not displayed: "+getElementDescription(by));
-			return false;
-		}
-	}
+//	public boolean isDisplayed(By by) {
+//		try {
+//			waitForElementToBeVisible(by);
+////			logger.info("Element is displayed " + getElementDescription(by));
+////			ExtentManager.logStep("Element is displayed: "+ getElementDescription(by));
+////			ExtentManager.logStepWithScreenshot(BaseClass.getDriver(), "Element is displayed: ", "Element is displayed: "+getElementDescription(by));
+////			return driver.findElement(by).isDisplayed();
+//			logger.info("Element is displayed " + getElementDescription(by));
+////			ExtentManager.logStep("Element is displayed: "+ getElementDescription(by));
+////			ExtentManager.logStepWithScreenshot(BaseClass.getDriver(), "Element is displayed: ", "Element is displayed: "+getElementDescription(by));
+//			return driver.findElement(by).isDisplayed();
+//		} catch (Exception e) {
+//			System.out.println("Element is not displayed: " + e.getMessage());
+//			ExtentManager.logFailure(BaseClass.getDriver(),"Element is not displayed: ","Elemenet is not displayed: "+getElementDescription(by));
+//			return false;
+//		}
+//	}
 
 	// Wait for the page to load
 	public void waitForPageLoad(int timeOutInSec) {
@@ -148,10 +171,7 @@ public class ActionDriver {
 		try {
 			wait.until(ExpectedConditions.visibilityOfElementLocated(by));
 		} catch (Exception e) {
-
-			{
-				System.out.println("Element is not visible: " + e.getMessage());
-			}
+			logger.error("Element is not visible:" + e.getMessage());
 		}
 	}
 

@@ -12,10 +12,11 @@ public class HomePage {
 
 	// Define locators using By class
 	private By adminTab = By.xpath("//span[text()='Admin']");
-	private By userIDButton = By.xpath("//*[text()='manda user']");;
+	private By userIDButton = By.xpath("//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']");;
 	private By logoutButton = By.xpath("//*[text()='Logout']");
-	private By oranageHRMlogo = By.xpath("//div[@class='oxd-brand-banner']//img");
-
+//	private By oranageHRMlogo = By.xpath("//div[@class='oxd-brand-banner']//img");
+	private By oranageHRMlogo = By.xpath("//h6[normalize-space()='Dashboard']");
+	
 	private By pimTab = By.xpath("//span[text()='PIM']");
 	private By employeeSearch = By
 			.xpath("//label[text()='Employee Name']/parent::div/following-sibling::div/div/div/input");

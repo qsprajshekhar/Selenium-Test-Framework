@@ -73,9 +73,9 @@ public class ExtentManager {
 	}
 	
 	//Log a step
-	public static void logStep(String logMessage) {
-		getTest().info(logMessage);
-	}
+		public static void logStep(String logMessage) {
+			getTest().info(logMessage);
+		}
 	
 	//Log a step validation with screenshot
 	public static void logStepWithScreenshot(WebDriver driver, String logMessage, String screenShotMessage) {
