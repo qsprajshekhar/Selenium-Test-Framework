@@ -11,6 +11,7 @@ public class DummyClass extends BaseClass {
 	@Test
 	public void dummyTest()
 	{
+		//Test checking for auto build after code changes locally pushed
 //		ExtentManager.startTest("DummyTest1 Test");
 		String title = getDriver().getTitle();
 		ExtentManager.logStep("verifying the title");
