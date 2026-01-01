@@ -25,7 +25,6 @@ pipeline {
                 bat 'mvn clean test'
             }
         }
-
         stage('Reports') {
             steps {
                 publishHTML(target: [
