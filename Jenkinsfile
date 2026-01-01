@@ -26,15 +26,6 @@ pipeline {
             }
         }
 
-        stage('Stop Selenium Grid') {
-            steps {
-                script {
-                    echo "Stopping Selenium Grid..."
-                    bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml down"
-                }
-            }
-        }
-
         stage('Reports') {
             steps {
                 publishHTML(target: [
