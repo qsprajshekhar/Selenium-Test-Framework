@@ -14,7 +14,7 @@ public class LoginPage {
 	
 	private By userNameField = By.name("username");
 	private By passworField = By.cssSelector("input[type='password']");
-	private By loginButton = By.xpath("//button[text()=' Login ']");
+	private By loginButton = By.tagName("button");
 	private By errorMessage = By.xpath("//p[text()='Invalid credentials']");
 	
 //	public LoginPage(WebDriver driver) {

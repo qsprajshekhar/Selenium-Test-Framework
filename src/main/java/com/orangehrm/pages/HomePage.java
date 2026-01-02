@@ -15,7 +15,7 @@ public class HomePage {
 	private By userIDButton = By.xpath("//i[@class='oxd-icon bi-caret-down-fill oxd-userdropdown-icon']");;
 	private By logoutButton = By.xpath("//*[text()='Logout']");
 //	private By oranageHRMlogo = By.xpath("//div[@class='oxd-brand-banner']//img");
-	private By oranageHRMlogo = By.xpath("//h6[normalize-space()='Dashboard']");
+	private By oranageHRMlogo = By.xpath("//h6[text()='Dashboard']");
 	
 	private By pimTab = By.xpath("//span[text()='PIM']");
 	private By employeeSearch = By
