@@ -36,7 +36,7 @@ pipeline {
             }
         }
     }
-
+    
     post {
         always {
             archiveArtifacts artifacts: '**/src/test/resources/ExtentReport/*.html', fingerprint: true
