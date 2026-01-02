@@ -174,16 +174,23 @@ public class BaseClass {
 
 		// Implicit wait - global wait
 		int implicitwait = Integer.parseInt(prop.getProperty("implicitwait"));
+		boolean seleniumGrid = Boolean.parseBoolean(System.getProperty("seleniumGrid", prop.getProperty("seleniumGrid")));
 		getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(implicitwait));
 
 		// Maximize the browser
 		getDriver().manage().window().maximize();
 
 		// Navigate to URL
-		try {
-			getDriver().get(prop.getProperty("url"));
-		} catch (Exception e) {
-			System.out.println("Failed to Navigate to the URL: " + e.getMessage());
+//		try {
+//			getDriver().get(prop.getProperty("url"));
+//		} catch (Exception e) {
+//			System.out.println("Failed to Navigate to the URL: " + e.getMessage());
+//		}
+		
+		if (seleniumGrid) {
+			getDriver().get(prop.getProperty("url_grid"));
+		} else {
+			getDriver().get(prop.getProperty("url_local"));
 		}
 	}
 
