@@ -6,24 +6,8 @@ pipeline {
         maven 'Maven-3.9.11' 
     }
     
-    environment {
-        COMPOSE_PATH = "${WORKSPACE}/docker" // 🔁 Adjust if compose file is elsewhere
-        SELENIUM_GRID = "true"
-    }
-
     stages {
-		
-		 stage('Start Selenium Grid via Docker Compose') {
-            steps {
-                script {
-                    echo "Starting Selenium Grid with Docker Compose..."
-                    bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml up -d"
-                    echo "Waiting for Selenium Grid to be ready..."
-                    sleep 30 // Add a wait if needed
-                }
-            }
-        }
-       
+		       
         stage('Checkout') {
             steps {
                 git branch: 'main', url: 'https://github.com/qsprajshekhar/Selenium-Test-Framework.git'
@@ -41,21 +25,13 @@ pipeline {
                 bat 'mvn clean test'
             }
         }
-        
-         stage('Stop Selenium Grid') {
-            steps {
-                script {
-                    echo "Stopping Selenium Grid..."
-                    bat "docker compose -f ${COMPOSE_PATH}\\docker-compose.yml down"
-                }
-            }
-        }
+               
         stage('Reports') {
             steps {
                 publishHTML(target: [
                     reportDir: 'src/test/resources/ExtentReport',  
                     reportFiles: 'ExtentReport.html',  
-                    reportName: 'Extent Report'
+                    reportName: 'Spark Extent Report'
                 ])
             }
         }

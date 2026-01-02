@@ -8,6 +8,7 @@
 	<parameter name="browser" value="chrome" />
 		<classes>
 			<class name="com.orangehrm.test.ApiTest"></class>
+			<class name="com.orangehrm.test.HomePageTest"></class>
 		</classes>
 	</test>
 </suite>
